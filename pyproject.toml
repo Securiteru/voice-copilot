@@ -1,0 +1,35 @@
+[tool.poetry]
+name = "voice-transcriber"
+version = "0.1.0"
+description = "Local speech-to-text with keybind activation"
+authors = ["securiter"]
+readme = "README.md"
+packages = [{include = "voice_transcriber"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+openai-whisper = "^20231117"
+sounddevice = "^0.4.6"
+scipy = "^1.10.0"
+pynput = "^1.7.6"
+pyautogui = "^0.9.54"
+pystray = "^0.19.5"
+pillow = "^10.0.0"
+plyer = "^2.1.0"
+numpy = "^1.24.0"
+pyttsx3 = "^2.90"
+pyperclip = "^1.8.2"
+edge-tts = "^6.1.0"
+pygame = "^2.5.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.0.0"
+black = "^23.0.0"
+flake8 = "^6.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+voice-transcriber = "voice_transcriber.main:main" 

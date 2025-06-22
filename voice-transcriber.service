@@ -1,0 +1,15 @@
+[Unit]
+Description=Voice Transcriber Service
+After=graphical-session.target
+
+[Service]
+Type=simple
+Environment=DISPLAY=:0
+Environment=PYTHONPATH=PLACEHOLDER_PROJECT_PATH
+WorkingDirectory=PLACEHOLDER_PROJECT_PATH
+ExecStart=PLACEHOLDER_PROJECT_PATH/.venv/bin/python -m voice_transcriber --model tiny --no-tray
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target 

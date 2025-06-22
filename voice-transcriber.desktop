@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=Voice Transcriber
+Comment=Local speech-to-text and text-to-speech service
+Exec=PLACEHOLDER_PROJECT_PATH/.venv/bin/python -m voice_transcriber --model tiny
+Path=PLACEHOLDER_PROJECT_PATH
+Icon=microphone
+Terminal=false
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+StartupNotify=false 
