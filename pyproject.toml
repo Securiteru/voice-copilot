@@ -21,6 +21,8 @@ pyttsx3 = "^2.90"
 pyperclip = "^1.8.2"
 edge-tts = "^6.1.0"
 pygame = "^2.5.0"
+flask = "^3.0.0"
+flask-cors = "^4.0.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.0.0"
@@ -32,4 +34,6 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
-voice-transcriber = "voice_transcriber.main:main" 
+voice-transcriber = "voice_transcriber.main:main"
+voice-transcriber-api = "voice_transcriber.api_server:main"
+voice-transcriber-combined = "voice_transcriber.combined_service:main" 

@@ -16,9 +16,16 @@ A fast, local, privacy-focused speech-to-text and text-to-speech application for
 - High-quality Microsoft Edge TTS voices
 - Works offline after initial voice download
 
+📱 **Mobile App Companion**
+- React Native mobile app for remote voice recording
+- Large microphone button for easy recording
+- Works over local WiFi or internet via ngrok
+- Real-time transcription feedback
+- Cross-platform (iOS and Android)
+
 🔒 **Privacy & Local Processing**
 - All speech processing happens locally
-- No data sent to external services
+- No data sent to external services (except via your own network)
 - Temporary audio files are automatically cleaned up
 
 ⚡ **Performance**
@@ -82,21 +89,31 @@ poetry run voice-transcriber --hotkey ctrl+shift+space --tts-hotkey ctrl+shift+r
 ### Command Line Options
 
 ```bash
+# Desktop-only service
 usage: voice-transcriber [-h] [--model {tiny,base,small,medium,large}] 
                         [--hotkey HOTKEY] [--tts-hotkey TTS_HOTKEY] 
                         [--no-tray] [--debug]
+
+# API server only
+usage: voice-transcriber-api [-h] [--host HOST] [--port PORT] [--model MODEL] [--debug]
+
+# Combined service (desktop + API)
+usage: voice-transcriber-combined [-h] [--api-host HOST] [--api-port PORT] 
+                                 [--model MODEL] [--hotkey HOTKEY] [--no-tray] [--debug]
 
 Local Speech-to-Text and Text-to-Speech Service
 
 options:
   -h, --help            show this help message and exit
   --model {tiny,base,small,medium,large}
-                        Whisper model size (default: tiny)
+                        Whisper model size (default: base)
   --hotkey HOTKEY       Recording hotkey (default: ctrl+f1)
   --tts-hotkey TTS_HOTKEY
                         Text-to-speech hotkey (default: ctrl+f2)
   --no-tray             Disable system tray icon
   --debug               Enable debug logging
+  --host HOST           API server host (default: 0.0.0.0)
+  --port PORT           API server port (default: 8000)
 ```
 
 ## Autostart Setup
@@ -165,6 +182,63 @@ cp voice_transcriber.env.example voice_transcriber.env
 # Edit with your settings
 nano voice_transcriber.env
 ```
+
+## Mobile App Setup
+
+The Voice Copilot includes a React Native mobile app companion that allows you to record voice remotely and send it to your desktop service for transcription.
+
+### Quick Mobile Setup
+
+1. **Start the API server** (choose one option):
+   ```bash
+   # Option 1: API server only
+   poetry run voice-transcriber-api --host 0.0.0.0 --port 8000
+   
+   # Option 2: Combined service (desktop hotkeys + API)
+   poetry run voice-transcriber-combined --api-host 0.0.0.0 --api-port 8000
+   
+   # Option 3: With ngrok for internet access
+   ./scripts/start-with-ngrok.sh
+   ```
+
+2. **Find your local IP address**:
+   ```bash
+   python3 scripts/get-local-ip.py
+   ```
+
+3. **Setup the mobile app**:
+   ```bash
+   cd mobile-app
+   npm install
+   npm start
+   ```
+
+4. **Configure the mobile app**:
+   - Scan the QR code with Expo Go app
+   - Enter your server URL (e.g., `http://192.168.1.100:8000`)
+   - Test the connection
+   - Start recording!
+
+### Network Options
+
+**Local WiFi (Recommended)**
+- Both devices on same WiFi network
+- Fast and private
+- Use IP address like `http://192.168.1.100:8000`
+
+**Internet via ngrok**
+- Access from anywhere
+- Requires ngrok installation
+- Use ngrok URL like `https://abc123.ngrok.io`
+
+### Mobile App Features
+
+- 🎤 Large, easy-to-use microphone button
+- 📊 Real-time recording duration display
+- 🔄 Connection status indicator
+- 📝 Transcription results display
+- ⚙️ Server URL configuration
+- 📱 Works on both iOS and Android
 
 ## Configuration
 
