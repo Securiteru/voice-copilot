@@ -1,0 +1,26 @@
+{
+  "name": "VoiceCopilotMobile",
+  "version": "1.0.0",
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web"
+  },
+  "dependencies": {
+    "expo": "~50.0.0",
+    "expo-av": "~13.10.4",
+    "expo-file-system": "~16.0.6",
+    "expo-permissions": "~14.4.0",
+    "react": "18.2.0",
+    "react-native": "0.73.4",
+    "react-native-paper": "^5.12.3",
+    "react-native-vector-icons": "^10.0.3",
+    "expo-status-bar": "~1.11.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.0"
+  },
+  "private": true
+}
